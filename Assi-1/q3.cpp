@@ -7,7 +7,7 @@ void recurse(int size, int open, int close, string op, vector<string> &ans) {
     return;
   }
 
-  if(open < size) 
+  if(open < size)
     recurse(size, open+1, close, op+"(", ans);
 
   if(close < open)

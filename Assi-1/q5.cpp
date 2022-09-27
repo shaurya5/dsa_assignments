@@ -11,7 +11,7 @@ int main() {
 
   int maxId;
   int count = 0;
-  
+    
   for(int i=0; i<n-1; i++) {
     maxId = i;
     for(int j=i+1; j<n; j++) {
