@@ -1,31 +1,36 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
+void swap(int &x, int &y) {
+	int temp = x;
+	x = y;
+	y = temp;
+}
+
 int main() {
-  int n;
-  cin >> n;
-  int arr[n];
-  for(int i=0; i<n; i++) {
-    cin >> arr[i];
-  }
+	int n;
+	cin >> n;
+	int arr[n];
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
 
-  int maxId;
-  int count = 0;
-    
-  for(int i=0; i<n-1; i++) {
-    maxId = i;
-    for(int j=i+1; j<n; j++) {
-      if(arr[j] > arr[maxId]) {
-        maxId = j;
-      }
+	int maxId;
+	int count = 0;
 
-    } 
-    if(maxId != i) {
-      swap(arr[i], arr[maxId]);
-      count++;
-    }
-  }
+	for (int i = 0; i < n - 1; i++) {
+		maxId = i;
+		for (int j = i + 1; j < n; j++) {
+			if (arr[j] > arr[maxId]) {
+				maxId = j;
+			}
+		}
+		if (maxId != i) {
+			swap(arr[i], arr[maxId]);
+			count++;
+		}
+	}
 
-  cout << count;
-  return 0;
+	cout << count;
+	return 0;
 }

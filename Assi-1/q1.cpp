@@ -17,6 +17,7 @@ GameEntry::GameEntry(const string &n, int s) : name(n), score(s) {
 }
 string GameEntry::getName() const { return name; }
 int GameEntry::getScore() const { return score; }
+
 class Scores { 
     public:
     	Scores(int maxEnt = 10);				  
@@ -25,15 +26,15 @@ class Scores {
     	GameEntry remove(int i) ; 
     	void printAllScores();
     private:
-    	int maxEntries;		// maximum number of entries
-    	int numEntries;		// actual number of entries
-    	GameEntry *entries; // array of game entries
+    	int maxEntries;
+    	int numEntries;
+    	GameEntry *entries;
 };
 
-Scores::Scores(int maxEnt) {			 // constructor
-	maxEntries = maxEnt;				 // save the max size
-	entries = new GameEntry[maxEntries]; // allocate array storage
-	numEntries = 0;						 // initially no elements
+Scores::Scores(int maxEnt) {
+	maxEntries = maxEnt;
+	entries = new GameEntry[maxEntries];
+	numEntries = 0;
 }
 
 Scores::~Scores() { 
@@ -69,11 +70,10 @@ void Scores::printAllScores() {
 }
 
 void showOptions() {
-	cout
-		<< "1: Add Player\n"
-		<< "2: Remove Player By Index\n"
-		<< "3: Print Scores\n"
-		<< "4: Exit\n";
+	cout << "1: Add Player\n"
+		 << "2: Remove Player By Index\n"
+		 << "3: Print Scores\n"
+		 << "4: Exit\n";
 }
 
 int main() {
@@ -102,7 +102,7 @@ int main() {
 			break;
 		case 4:
 			return EXIT_SUCCESS;
-		default :
+		default:
 		    cout<<"wrong input, Try again"<< endl;
 		    continue;
 		}
