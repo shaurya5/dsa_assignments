@@ -30,10 +30,21 @@ Node* createLL() {
 	return head;
 }
 
+void printLL(Node *head, int length) {
+	while(length > 0) {
+		cout << head->data << " ";
+		head = head->next;
+		length--;
+	}
+	cout << endl;
+}
+
 int main() {
 	Node *head = createLL();
 	Node *fast = head;
 	Node *slow = head;
+	int size = 10; // number of elements to print. Keeping this greater than size of LL so that we can see the intersection
+	printLL(head, size);
 
 	while(fast != NULL && fast->next != NULL) {
 		fast = fast->next->next;
@@ -43,6 +54,7 @@ int main() {
 				slow = slow->next;
 				head = head->next;
 			}
+			cout << "Harshit's node is: ";
 			cout << slow->data << endl;
 			break;
 		}
