@@ -1,5 +1,5 @@
 #include <iostream>
-#include <time.h>
+#include "timer.h"
 using namespace std;
 
 bool solve(int *arr, int left, int right, int target) {
@@ -14,9 +14,13 @@ bool solve(int *arr, int left, int right, int target) {
 }
 
 int main() {
-	clock_t startTime = clock();
+	Timer timer;
+	timer.start();
 	int arr[] = {1,2,3,4,5,6,7,8,9};
 	cout << solve(arr, 0, 8, 10) << "\n";
-	cout << "Time taken: " << (double)(clock()-startTime)/CLOCKS_PER_SEC << " seconds";
-  	return 0;
+	timer.stop();
+	double milliSecs = timer.getDurationInMilliSeconds();
+	cout << "Execution Time: " << milliSecs << " ms." << "\n";
+
+  return 0;
 }
