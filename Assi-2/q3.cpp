@@ -3,25 +3,26 @@
 #include <vector>
 using namespace std;
 
-vector<int> solve(int n, int *arr) {
+void solve(int *arr,int n){
+	vector<int> ans(n,-1);
 	stack<int> s;
-	s.push(arr[0]);
-	vector<int> ans(n);
-	for(int i = 1; i < n; i++) {
-		while(!s.empty() && arr[s.top()] <= arr[i]) {
-			ans[s.top()] = arr[i];
+	s.push(arr[n-1]);
+	
+	for(int i=n-2; i>=0; i--){
+		while(!s.empty() && arr[i]>=s.top()){
 			s.pop();
 		}
-		s.push(i);
+		if(!s.empty()){
+			ans[i] = s.top();
+		}
+		s.push(arr[i]);
 	}
-
-	while(!s.empty()) {
-		ans[s.top()] = -1;
-		s.pop();
+ 
+	for(int val : ans){
+		cout << val << " ";
 	}
-	return ans;
 }
-
+ 
 int main() {
 	int t;
 	cin >> t;
@@ -29,11 +30,9 @@ int main() {
 		int n;
 		cin >> n;
 		int arr[n];
-		for(int i=0; i<n; i++)
-			cin >> arr[i];
-		vector<int> ans = solve(n, arr);
-		for(int i : ans)
-			cout << i << " ";
-		cout << "\n";
+		for(int i=0;i<n;i++)
+		cin >> arr[i];
+		solve(arr,n);
+		cout << endl;
 	}
 }
