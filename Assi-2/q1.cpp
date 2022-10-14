@@ -16,8 +16,12 @@ bool solve(int *arr, int left, int right, int target) {
 int main() {
 	Timer timer;
 	timer.start();
-	int arr[] = {1,2,3,4,5,6,7,8,9};
-	cout << solve(arr, 0, 8, 10) << "\n";
+	int n;
+	cin >> n;
+	int arr[n];
+	for(int i=0; i<n; i++)
+		cin >> arr[i];
+	cout << solve(arr, 0, n-1, 10) << "\n";
 	timer.stop();
 	double milliSecs = timer.getDurationInMilliSeconds();
 	cout << "Execution Time: " << milliSecs << " ms." << "\n";
