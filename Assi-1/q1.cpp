@@ -103,7 +103,7 @@ int main() {
 		case 4:
 			return EXIT_SUCCESS;
 		default:
-		    cout<<"wrong input, Try again"<< endl;
+		    cout << "Enter valid input" << endl;
 		    continue;
 		}
 	}
