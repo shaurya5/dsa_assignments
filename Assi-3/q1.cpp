@@ -49,6 +49,5 @@ int main() {
     }
 
     calculateSum(1, N, tree);
- 
     return 0;
 }
