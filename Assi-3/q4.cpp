@@ -6,7 +6,7 @@ using namespace std;
 int main() {
 	int n;
 	cin >> n;
-	unordered_map<string, vector<pair<int,int>>> m;
+	unordered_map<string, vector<pair<int,int>>> m; // name: [{index, value}]
 
 	for(int i = 0; i < n; i++) {
 		string s;
@@ -18,11 +18,12 @@ int main() {
 	int maxScore = -1;
 	for(auto it : m) {
 		int sum = 0;
-		for(auto p : it.second)
+		for(auto p : it.second) {
 			sum += p.second;
+        }
+        m[it.first].push_back({-1, sum});
 		maxScore = max(sum, maxScore);
 	}
-
 
 	// cout << "Max Score: " << maxScore << endl;
 
@@ -33,6 +34,7 @@ int main() {
 	// 	}
 	// 	cout << endl;
 	// }
+    
 	vector<pair<int,string>> v;
 	int minIndex = INT_MAX;
 
@@ -40,7 +42,7 @@ int main() {
 		int sum = 0;
 		for(auto p : it.second) {
 			sum += p.second;
-			if(sum >= maxScore) {
+			if(sum >= maxScore && it.second[it.second.size() - 1].second >= maxScore) {
 				minIndex = min(minIndex, p.first);
 				v.push_back({p.first, it.first});  // p.first -> index , it.first -> name
 				break;
