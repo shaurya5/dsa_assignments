@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unordered_map>
 using namespace std;
 
 int main() {
@@ -7,12 +8,20 @@ int main() {
 	while(T--) {
 		int n;
 		cin >> n;
-		int arr[n+1];
-		for(int i=1; i<=n; i++) {
-			cin >> arr[i];
+		unordered_map<int,int> m;
+		for(int i=0; i<n; i++) {
+			int a;
+			cin >> a;
+			m[a - 2*(i+1)]++;
 		}
-		for(auto i : arr) cout << i << endl;
-	}
 
+		int count = 0;
+		for(auto i=m.begin(); i!=m.end(); i++) {
+			if((*i).second > 1) {
+				count += ((*i).second) * ((*i).second - 1) / 2;
+			}
+		}
+		cout << count << endl;
+	}
 	return 0;
 }
