@@ -8,7 +8,7 @@ int main() {
 	cin >> n;
 	unordered_map<string, vector<pair<int,int>>> m; // name: [{index, value}]
 
-    // creating an unordered map with name, {index, value}
+  // creating an unordered map with name, {index, value}
 	for(int i = 0; i < n; i++) {
 		string s;
 		int x;
@@ -22,8 +22,8 @@ int main() {
 		int sum = 0;
 		for(auto p : it.second) {
 			sum += p.second;
-        }
-        m[it.first].push_back({-1, sum});
+    }
+    m[it.first].push_back({-1, sum});
 		maxScore = max(sum, maxScore);
 	}
 
@@ -45,8 +45,8 @@ int main() {
 		int sum = 0;
 		for(auto p : it.second) {
 			sum += p.second;
-            int vSize = it.second.size();
-            int lastValue = it.second[vSize - 1].second;
+			int vSize = it.second.size();
+			int lastValue = it.second[vSize - 1].second;
 			if(sum >= maxScore && lastValue >= maxScore) {
 				minIndex = min(minIndex, p.first);
 				v.push_back({p.first, it.first});  // p.first -> index , it.first -> name
